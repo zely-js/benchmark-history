@@ -1,0 +1,29 @@
+{
+  "devDependencies": {
+    "@swc-node/register": "^1.10.9",
+    "@swc/core": "^1.7.3",
+    "@types/autocannon": "^7.12.5",
+    "@types/node": "^18.11.10",
+    "@typescript-eslint/eslint-plugin": "^5.62.0",
+    "@typescript-eslint/parser": "^5.36.1",
+    "esbuild": "^0.18.14",
+    "esbuild-node-externals": "^1.8.0",
+    "eslint": "^8.43.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.25.4",
+    "typescript": "^5.6.2"
+  },
+  "scripts": {
+    "build": "node -r @swc-node/register src/index.ts",
+    "lint-fix": "eslint --fix --ext .js,.ts ."
+  },
+  "version": "0.0.0",
+  "dependencies": {
+    "@zely-js/zely": "^4.0.0-next.4",
+    "autocannon": "^8.0.0",
+    "colors": "^1.4.0",
+    "segify": "^0.0.0-beta.17",
+    "semver": "^7.6.3",
+    "zely": "1.0.0"
+  }
+}
