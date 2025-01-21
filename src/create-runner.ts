@@ -9,7 +9,7 @@ export function createRunner(version: string) {
 
   if (isV2) {
     code +=
-      '(async function() {const server = await zely.zely({});server.server.listen(port, () => {console.log("[run]")})})()';
+      '(async function(args) {const server = await zely.zely({experimental: {useSerpack: args.includes("--serpack")}});server.server.listen(port, () => {console.log("[run]")})})(process.argv)';
   } else {
     code +=
       '(async function() {const server = await zely.Zely({});server.listen(port, () => {console.log("[run]")})})()';

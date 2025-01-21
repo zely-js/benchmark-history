@@ -29,7 +29,7 @@ export async function buildVersion(version: string) {
     platform: 'node',
     external: [
       ...Object.keys(pkgJSON.devDependencies),
-      ...['segify', 'source-map', 'mime-types', 'chokidar'],
+      ...['segify', 'source-map', 'mime-types', 'chokidar', 'serpack'],
     ],
   });
 

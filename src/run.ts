@@ -21,11 +21,15 @@ export function toBytes(bytes: number, decimals: number = 2) {
   return `${parseFloat((bytes / k ** i).toFixed(dm))} ${sizes[i]}`;
 }
 
-export function run(version: string, port: number) {
+export function run(version: string, port: number, flags: string[] = []) {
   return new Promise<Result>((resolve, reject) => {
     const runner = spawn(
       'node',
-      [join(process.cwd(), 'versions', `zely-${version}`, 'runner.js'), `${port}`],
+      [
+        join(process.cwd(), 'versions', `zely-${version}`, 'runner.js'),
+        `${port}`,
+        ...flags,
+      ],
       { cwd: process.cwd() }
     );
 
@@ -34,6 +38,7 @@ export function run(version: string, port: number) {
         'node',
         join(process.cwd(), 'versions', `zely-${version}`, 'runner.js'),
         `${port}`,
+        ...flags,
       ].join(' ')}`.gray
     );
 

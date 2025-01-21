@@ -7,7 +7,7 @@ import { createRunner } from './create-runner';
 import { run } from './run';
 import { printResult } from './print';
 
-const targets = ['4.0.0-next.4', '3.0.0', '2.0.0-next.24', '1.0.0'];
+const targets = ['4.0.0-next.9', '3.0.0', '2.0.0-next.24', '1.0.0'];
 
 async function main(keep: boolean = false) {
   !keep && rmSync(join(process.cwd(), 'versions'), { recursive: true, force: true });
@@ -28,12 +28,34 @@ async function main(keep: boolean = false) {
     index += 1;
 
     const port = 3000 + index;
+    const isV4 = Number(version.split('.')[0]) >= 4;
+    const flags = ['--loader-performance'];
 
-    console.log(`${'running'.green} zely@${version} on ${port}`);
+    if (isV4) {
+      flags.push('--serpack', '--serpack-runtime');
+    }
 
-    const result = await run(version, port);
+    if (isV4) {
+      console.log(`${'running'.green} zely@${version}(serpack:on) on ${port}`);
 
-    output[version] = result;
+      const result2 = await run(version, port, flags);
+
+      output[`${version}:serpack-on`] = result2;
+
+      index += 1;
+
+      console.log(`${'running'.green} zely@${version} on(serpack:off) ${port + 1}`);
+
+      const result1 = await run(version, port + 1);
+
+      output[version] = result1;
+    } else {
+      console.log(`${'running'.green} zely@${version} on(serpack:off) ${port}`);
+
+      const result1 = await run(version, port, flags);
+
+      output[version] = result1;
+    }
   }
 
   printResult(output);
