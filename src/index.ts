@@ -7,7 +7,7 @@ import { createRunner } from './create-runner';
 import { run } from './run';
 import { printResult } from './print';
 
-const targets = ['4.0.0-next.9', '3.0.0', '2.0.0-next.24', '1.0.0'];
+const targets = ['4.0.0-next.16', '4.0.0-next.9', '3.0.0', '2.0.0-next.24', '1.0.0'];
 
 async function main(keep: boolean = false) {
   !keep && rmSync(join(process.cwd(), 'versions'), { recursive: true, force: true });

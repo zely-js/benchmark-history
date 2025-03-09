@@ -58,6 +58,8 @@ export function run(version: string, port: number, flags: string[] = []) {
         console.log(`bytes: ${toBytes(result.throughput.average).toString().bold}`);
 
         resolve(result);
+      } else {
+        console.log(`[0] ${message}`.gray);
       }
     });
 

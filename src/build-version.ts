@@ -29,9 +29,25 @@ export async function buildVersion(version: string) {
     platform: 'node',
     external: [
       ...Object.keys(pkgJSON.devDependencies),
-      ...['segify', 'source-map', 'mime-types', 'chokidar', 'serpack'],
+      ...[
+        'segify',
+        'source-map',
+        'mime-types',
+        'chokidar',
+        '@swc/core',
+        'oxc-resolver',
+        'estree-walker',
+        'acorn',
+        'escodegen',
+        '@serpack/logger',
+        '@swc/helpers',
+        'animaux',
+      ],
     ],
   });
 
-  writeFileSync(join(out, 'pkg.json'), JSON.stringify({ version }));
+  writeFileSync(
+    join(out, 'pkg.json'),
+    JSON.stringify({ version, dependencies: pkg.dependencies })
+  );
 }
