@@ -25,11 +25,11 @@ export async function buildVersion(version: string) {
     entryPoints: [join(process.cwd(), 'node_modules', 'zely', pkg.main)],
     outfile: join(out, 'index.js'),
     bundle: true,
-    minify: true,
     platform: 'node',
     external: [
       ...Object.keys(pkgJSON.devDependencies),
       ...[
+        'oxc-parser',
         'segify',
         'source-map',
         'mime-types',

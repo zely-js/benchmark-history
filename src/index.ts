@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-expressions */
 import { join } from 'path';
+import { build } from 'zely';
 import { rmSync } from 'fs';
 
 import { buildVersion } from './build-version';
@@ -7,7 +8,7 @@ import { createRunner } from './create-runner';
 import { run } from './run';
 import { printResult } from './print';
 
-const targets = ['4.0.0-next.16', '4.0.0-next.9', '3.0.0', '2.0.0-next.24', '1.0.0'];
+const targets = ['4.0.1'];
 
 async function main(keep: boolean = false) {
   !keep && rmSync(join(process.cwd(), 'versions'), { recursive: true, force: true });
@@ -27,7 +28,7 @@ async function main(keep: boolean = false) {
   for await (const version of targets) {
     index += 1;
 
-    const port = 3000 + index;
+    const port = 8080 + index;
     const isV4 = Number(version.split('.')[0]) >= 4;
     const flags = ['--loader-performance'];
 
@@ -58,10 +59,21 @@ async function main(keep: boolean = false) {
     }
   }
 
+  // Run production server
+
+  const prod = await build({});
+
+  const outputProd = await run('', 3000, [], prod.filename);
+
+  output.built = outputProd;
+
+  const outputExpress = await run('', 3001, [], join(process.cwd(), 'express.js'));
+
+  output.express = outputExpress;
+
   printResult(output);
 
   console.log('\n==> See result.md');
-
   process.exit(0);
 }
 

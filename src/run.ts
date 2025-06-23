@@ -21,30 +21,40 @@ export function toBytes(bytes: number, decimals: number = 2) {
   return `${parseFloat((bytes / k ** i).toFixed(dm))} ${sizes[i]}`;
 }
 
-export function run(version: string, port: number, flags: string[] = []) {
+export function run(
+  version: string,
+  port: number,
+  flags?: string[],
+  provRunner?: string
+) {
   return new Promise<Result>((resolve, reject) => {
     const runner = spawn(
       'node',
-      [
-        join(process.cwd(), 'versions', `zely-${version}`, 'runner.js'),
-        `${port}`,
-        ...flags,
-      ],
+      provRunner
+        ? [provRunner]
+        : [
+            join(process.cwd(), 'versions', `zely-${version}`, 'runner.js'),
+            `${port}`,
+            ...(flags || []),
+          ],
       { cwd: process.cwd() }
     );
 
     console.log(
-      `$ ${[
-        'node',
-        join(process.cwd(), 'versions', `zely-${version}`, 'runner.js'),
-        `${port}`,
-        ...flags,
-      ].join(' ')}`.gray
+      `$ ${
+        provRunner ??
+        [
+          'node',
+          join(process.cwd(), 'versions', `zely-${version}`, 'runner.js'),
+          `${port}`,
+          ...(flags || []),
+        ].join(' ')
+      }`.gray
     );
 
     runner.stdout.on('data', async (msg) => {
       const message = msg.toString();
-      if (message.trim().startsWith('[run]')) {
+      if (message.trim().startsWith('[run]') || message.trim().startsWith('server')) {
         process.env.NODE_ENV = 'development';
         await fetch(`http://localhost:${port}`);
 
@@ -59,7 +69,7 @@ export function run(version: string, port: number, flags: string[] = []) {
 
         resolve(result);
       } else {
-        console.log(`[0] ${message}`.gray);
+        console.log(message);
       }
     });
 
