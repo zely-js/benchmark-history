@@ -8,7 +8,7 @@ import { createRunner } from './create-runner';
 import { run } from './run';
 import { printResult } from './print';
 
-const targets = ['4.0.1'];
+const targets = ['4.0.3-beta.0', '4.0.1'];
 
 async function main(keep: boolean = false) {
   !keep && rmSync(join(process.cwd(), 'versions'), { recursive: true, force: true });

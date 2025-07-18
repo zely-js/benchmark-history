@@ -1,3 +1,7 @@
-export function get() {
-  return 'Hello World';
-}
+import { GET } from 'zely';
+
+export default [
+  GET((context) => {
+    return 'HELLO';
+  }),
+];

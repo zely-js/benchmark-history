@@ -824,6 +824,21 @@
     serpack "^0.1.34"
     source-map "^0.7.4"
 
+"@zely-js/core@4.0.3-beta.0":
+  version "4.0.3-beta.0"
+  resolved "https://registry.yarnpkg.com/@zely-js/core/-/core-4.0.3-beta.0.tgz#78198159685fb3242509ac481549c9b3be0ff2af"
+  integrity sha512-KhLlm9uWxdboDT45V51zVDgzQAR7GFtwstDyPtgoJwXWjKfb3m6dS67Ca1W/wQbv3j3jzM45Pa/dU/qj1mb4Yg==
+  dependencies:
+    "@zely-js/logger" "4.0.0"
+    "@zept/path-regexp" "^0.0.1"
+    chokidar "3.6.0"
+    esbuild "^0.24.0"
+    mime-types "^2.1.35"
+    segify "^0.0.0-beta.17"
+    senta "^0.0.0"
+    serpack "^0.1.34"
+    source-map "^0.7.4"
+
 "@zely-js/logger@4.0.0":
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/@zely-js/logger/-/logger-4.0.0.tgz#0e0c40915a3726a9034dba2b9f01721e09f1f0c9"
@@ -837,6 +852,15 @@
   integrity sha512-lX3Uxy49DBplz/kiWdlAl660Ne0XFbFWSXTWZuIGTSsnWPXwQz/gSIngabw9kOTYCqC++DS1GId3aOTSfAV/8g==
   dependencies:
     "@zely-js/core" "4.0.1"
+    "@zely-js/logger" "4.0.0"
+    senta "^0.0.0"
+
+"@zely-js/zely@4.0.3-beta.0":
+  version "4.0.3-beta.0"
+  resolved "https://registry.yarnpkg.com/@zely-js/zely/-/zely-4.0.3-beta.0.tgz#a67de1162a9f6460b9e8f0fd4f4216304f2db049"
+  integrity sha512-xalNXrrq5yR9coaGAdzrklOc5jj/NguYQjecvsSl8UXNJpJRNWaTwwTF9hHYIVGdJcE+QezyWzyNZnzdWOnjrg==
+  dependencies:
+    "@zely-js/core" "4.0.3-beta.0"
     "@zely-js/logger" "4.0.0"
     senta "^0.0.0"
 
@@ -3461,6 +3485,22 @@ yocto-queue@^0.1.0:
   resolved "https://registry.yarnpkg.com/yocto-queue/-/yocto-queue-0.1.0.tgz#0294eb3dee05028d31ee1a5fa2c556a6aaf10a1b"
   integrity sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==
 
+"zely------------@npm:zely@4.0.3-beta.0":
+  version "4.0.3-beta.0"
+  resolved "https://registry.yarnpkg.com/zely/-/zely-4.0.3-beta.0.tgz#74975f602f61ba623df7d77e3ee7d44f22fa42d4"
+  integrity sha512-oIi6U2AUKAF8NIHE1mABlfWqLO5ZB9LmqgbAOQMkRUnAo5ppfi3S3RK5GLBFE9tmOMlwf+WV4+QmQVX1lrK0og==
+  dependencies:
+    "@zely-js/zely" "4.0.3-beta.0"
+    zely-cli "4.0.3-beta.0"
+
+"zely-----@npm:zely@4.0.1":
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/zely/-/zely-4.0.1.tgz#089dccaa91446a19f6e1fb9da4be4ed83c93c568"
+  integrity sha512-EjXV0VPjHOqeibw6ERvbHtcwF/skBt+1GyowzLwW+l7HjanF2fSkY406D1m9Jz/qM4BUVMp50OjLk+l89OMf1A==
+  dependencies:
+    "@zely-js/zely" "4.0.1"
+    zely-cli "4.0.1"
+
 zely-cli@4.0.1:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/zely-cli/-/zely-cli-4.0.1.tgz#cf8de4dbf584c9a811d6da928abc8ba807374215"
@@ -3472,10 +3512,37 @@ zely-cli@4.0.1:
     colors "^1.4.0"
     prompts "^2.4.2"
 
-zely@^4.0.1:
+zely-cli@4.0.3-beta.0:
+  version "4.0.3-beta.0"
+  resolved "https://registry.yarnpkg.com/zely-cli/-/zely-cli-4.0.3-beta.0.tgz#1811f9b7a937b87379221f9bb25d915688c06dcb"
+  integrity sha512-ta5tV+gCc406t2sV900nhhb1yKU0B5vxZ+9ETaOvE6V4NqQE4CjtcbemDdA5QIy2XwCULwedQyTNqZhLcmaAKA==
+  dependencies:
+    "@zely-js/logger" "4.0.0"
+    "@zely-js/zely" "4.0.3-beta.0"
+    animaux "^0.1.0"
+    colors "^1.4.0"
+    prompts "^2.4.2"
+
+"zely4-0-1@npm:zely@4.0.1":
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/zely/-/zely-4.0.1.tgz#089dccaa91446a19f6e1fb9da4be4ed83c93c568"
   integrity sha512-EjXV0VPjHOqeibw6ERvbHtcwF/skBt+1GyowzLwW+l7HjanF2fSkY406D1m9Jz/qM4BUVMp50OjLk+l89OMf1A==
   dependencies:
     "@zely-js/zely" "4.0.1"
     zely-cli "4.0.1"
+
+"zely4-0-3-beta-0@npm:zely@4.0.3-beta.0":
+  version "4.0.3-beta.0"
+  resolved "https://registry.yarnpkg.com/zely/-/zely-4.0.3-beta.0.tgz#74975f602f61ba623df7d77e3ee7d44f22fa42d4"
+  integrity sha512-oIi6U2AUKAF8NIHE1mABlfWqLO5ZB9LmqgbAOQMkRUnAo5ppfi3S3RK5GLBFE9tmOMlwf+WV4+QmQVX1lrK0og==
+  dependencies:
+    "@zely-js/zely" "4.0.3-beta.0"
+    zely-cli "4.0.3-beta.0"
+
+zely@^4.0.3-beta.0:
+  version "4.0.3-beta.0"
+  resolved "https://registry.yarnpkg.com/zely/-/zely-4.0.3-beta.0.tgz#74975f602f61ba623df7d77e3ee7d44f22fa42d4"
+  integrity sha512-oIi6U2AUKAF8NIHE1mABlfWqLO5ZB9LmqgbAOQMkRUnAo5ppfi3S3RK5GLBFE9tmOMlwf+WV4+QmQVX1lrK0og==
+  dependencies:
+    "@zely-js/zely" "4.0.3-beta.0"
+    zely-cli "4.0.3-beta.0"

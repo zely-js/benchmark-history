@@ -25,6 +25,10 @@
     "segify": "^0.0.0-beta.17",
     "semver": "^7.6.3",
     "source-map": "^0.7.4",
-    "zely": "^4.0.1"
+    "zely": "^4.0.3-beta.0",
+    "zely-----": "npm:zely@4.0.1",
+    "zely------------": "npm:zely@4.0.3-beta.0",
+    "zely4-0-1": "npm:zely@4.0.1",
+    "zely4-0-3-beta-0": "npm:zely@4.0.3-beta.0"
   }
 }

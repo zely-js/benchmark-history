@@ -28,6 +28,8 @@ export function run(
   provRunner?: string
 ) {
   return new Promise<Result>((resolve, reject) => {
+    const startTime = performance.now();
+
     const runner = spawn(
       'node',
       provRunner
@@ -58,6 +60,8 @@ export function run(
         process.env.NODE_ENV = 'development';
         await fetch(`http://localhost:${port}`);
 
+        console.log(`Time to start : ${(performance.now() - startTime).toFixed(2)}ms`);
+
         const result = await autocannon({
           url: `http://localhost:${port}`,
         });
@@ -69,7 +73,7 @@ export function run(
 
         resolve(result);
       } else {
-        console.log(message);
+        console.log(`$ ${message}`);
       }
     });
 
