@@ -21,43 +21,7 @@ async function main(keep: boolean = false) {
     createRunner(version);
   }
 
-  let index = -1;
-
   const output: Record<string, any> = {};
-
-  for await (const version of targets) {
-    index += 1;
-
-    const port = 8080 + index;
-    const isV4 = Number(version.split('.')[0]) >= 4;
-    const flags = ['--loader-performance'];
-
-    if (isV4) {
-      flags.push('--serpack', '--serpack-runtime');
-    }
-
-    if (isV4) {
-      console.log(`${'running'.green} zely@${version}(serpack:on) on ${port}`);
-
-      const result2 = await run(version, port, flags);
-
-      output[`${version}:serpack-on`] = result2;
-
-      index += 1;
-
-      console.log(`${'running'.green} zely@${version} on(serpack:off) ${port + 1}`);
-
-      const result1 = await run(version, port + 1);
-
-      output[version] = result1;
-    } else {
-      console.log(`${'running'.green} zely@${version} on(serpack:off) ${port}`);
-
-      const result1 = await run(version, port, flags);
-
-      output[version] = result1;
-    }
-  }
 
   // Run production server
 
@@ -70,6 +34,15 @@ async function main(keep: boolean = false) {
   const outputExpress = await run('', 3001, [], join(process.cwd(), 'express.js'));
 
   output.express = outputExpress;
+
+  const outputDobs = await run('', 5050, [], join(process.cwd(), 'dobs.js'));
+
+  output.dobs = outputDobs;
+
+  process.env.PORT = 5051;
+  const outputDobsBuild = await run('', 5051, [], join(process.cwd(), 'dist/index.js'));
+
+  output.dobsBuild = outputDobsBuild;
 
   printResult(output);
 

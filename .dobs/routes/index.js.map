@@ -1,0 +1,1 @@
+{"version":3,"file":"index.js","names":[],"sources":["../../app/index.ts"],"sourcesContent":["import { defineRoutes } from 'dobs';\n\nexport default defineRoutes((req, res) => {\n  res.send('HELLO');\n});\n"],"mappings":";;;AAEA,0CAA6B,KAAK,QAAQ;AACxC,KAAI,KAAK,QAAQ;EACjB"}
